@@ -29,4 +29,3 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-Editing npm-package-action/npm-publish.yml at main · AnupamAS0x1/npm-package-action
