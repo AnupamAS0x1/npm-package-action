@@ -1,4 +1,4 @@
-name: Deploy to npm
+name: Publish to npm
 
 on:
   push:
@@ -9,22 +9,25 @@ env:
   NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v1
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
       with:
-        node-version: 12
+        node-version: 14
+
+    - name: Configure npm
+      run: echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" > $HOME/.npmrc
 
     - name: Install dependencies
       run: npm ci
 
     - name: Publish to npm
-      run: |
-        echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" > $HOME/.npmrc
-        npm publish
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
