@@ -1,0 +1,14 @@
+{
+  "name": "mdes_digital_enablement_api",
+  "version": "12.0.0",
+  "description": "AnupamAS01",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mdes_digital_enablement_api": "^12.0.0"
+  }
+}
