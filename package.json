@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mdes_digital_enablement_api": "^12.0.0"
+    "mdes_digital_enablement_api-111": "^12.0.0"
   }
 }
