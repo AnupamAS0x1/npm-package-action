@@ -1,27 +1,69 @@
-name: "🚀 release"
+
+Skip to content
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+@AnupamAS0x1
+AnupamAS0x1 /
+npm-package-action
+Public
+
+Fork your own copy of AnupamAS0x1/npm-package-action
+
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+
+    Settings
+
+Node.js Package
+Update npm-publish.yml #1
+
+    Jobs
+
+    Run details
+
+Workflow file for this run
+.github/workflows/npm-publish.yml at c7181f3
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: Node.js Package
 
 on:
-    release:
-        types: [published]
+  push:
+    branches:
+      - main
 
 jobs:
-    release:
-        name: 🚀 release
-        runs-on: ubuntu-latest
-        steps:
-            - name: 📚 checkout
-              uses: actions/checkout@v2.1.1
-            - name: 🟢 node
-              uses: actions/setup-node@v1.4.2
-              with:
-                  node-version: 12
-                  registry-url: https://registry.npmjs.org
-            - name: 🚀 publish
-              run: npm publish --access public
-              working-directory: my-package
-              env:
-                  NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      
 
-         
-         
-  
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+Editing npm-package-action/npm-publish.yml at main · AnupamAS0x1/npm-package-action
