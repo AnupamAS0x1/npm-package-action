@@ -1,3 +1,2 @@
-# ossillate
 
 # npm-package-action
