@@ -23,3 +23,6 @@ jobs:
 
       - name: Build
         run: npm run build
+      
+      - name: build
+      - run: npm i github-pages
