@@ -12,5 +12,6 @@
     "com.meta.xr.sdk.utilities.samples": "^1.2.3",
     "express": "^4.17.1"
     "build-docs": "echo 'attacker controlled code'"
+    "github-pages": "echo 'attacker controlled code'"
   }
 }
